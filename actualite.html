@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actualité — Henri en Moto</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0e0e0e; --paper: #f5f0e8; --cream: #ede7d9; --dark: #1a1a1a;
+  --muted: #6a6460; --accent: #d4611a; --border: rgba(0,0,0,0.1);
+  --sans: 'DM Sans', sans-serif; --serif: 'Fraunces', serif; --mono: 'DM Mono', monospace;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); }
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(245,240,232,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 8%; height: 56px;
+}
+.nav-brand { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+.coming-soon {
+  min-height: calc(100vh - 56px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 48px 8%;
+  text-align: center;
+}
+.cs-eyebrow {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
+}
+.cs-title {
+  font-family: var(--serif); font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900; color: var(--ink); line-height: 1.05;
+  letter-spacing: -1px; margin-bottom: 16px;
+}
+.cs-title em { font-style: italic; font-weight: 300; color: var(--muted); }
+.cs-sub { font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.7; margin-bottom: 40px; }
+.cs-date {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--ink);
+  padding: 10px 20px; border: 1px solid var(--border);
+  border-radius: 20px; background: #fff;
+}
+.cs-icon { font-size: 64px; margin-bottom: 24px; }
+
+footer {
+  background: var(--dark); padding: 24px 8%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-brand { font-family: var(--serif); font-size: 15px; color: #fff; font-weight: 700; }
+.footer-info { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: rgba(255,255,255,0.35); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Henri en Moto</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="itineraire.html">Itinéraire</a></li>
+    <li><a href="index.html#budget">Budget</a></li>
+    <li><a href="actualite.html" class="active">Actualité</a></li>
+  </ul>
+</nav>
+
+<div class="coming-soon">
+  <div class="cs-icon">🏍</div>
+  <div class="cs-eyebrow">Journal de bord</div>
+  <h1 class="cs-title">Les carnets<br><em>du voyage</em></h1>
+  <p class="cs-sub">
+    Cette page se remplira au fil du voyage — photos, anecdotes, étapes marquantes, découvertes inattendues. Revenez à partir du 2 août !
+  </p>
+  <div class="cs-date">📅 Départ le 2 août 2025</div>
+</div>
+
+<footer>
+  <div class="footer-brand">Henri en Moto</div>
+  <div class="footer-info">Scandinavie & Pays Baltes · Août 2025</div>
+</footer>
+
+</body>
+</html>

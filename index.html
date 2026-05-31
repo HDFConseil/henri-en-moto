@@ -301,14 +301,14 @@ body {
 
 /* ── MAP SECTION ── */
 #map-section {
-  background: var(--dark);
+  background: #f0ede8;
   padding: 0;
   max-width: 100%;
 }
 
 .map-header {
   padding: 48px 8% 32px;
-  background: var(--dark);
+  background: #f0ede8;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -318,9 +318,9 @@ body {
 
 .map-header-left {}
 
-.map-header .section-label { color: rgba(80,200,140,0.8); }
-.map-header .section-title { color: #fff; }
-.map-header .section-title em { color: rgba(255,255,255,0.35); }
+.map-header .section-label { color: var(--accent); }
+.map-header .section-title { color: var(--ink); }
+.map-header .section-title em { color: var(--muted); }
 
 .map-phase-tabs {
   display: flex;
@@ -335,23 +335,23 @@ body {
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.15);
+  color: var(--muted);
   cursor: pointer;
   transition: all 0.2s;
-  background: transparent;
+  background: #fff;
 }
 .phase-tab:hover, .phase-tab.active {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(212,97,26,0.1);
+  background: rgba(212,97,26,0.06);
 }
 
 .map-container {
   width: 100%;
   height: 520px;
   position: relative;
-  background: #0d1520;
+  background: #e8e4dc;
 }
 
 #route-map {
@@ -363,9 +363,9 @@ body {
   position: absolute;
   bottom: 24px;
   right: 24px;
-  background: rgba(10,20,30,0.88);
+  background: rgba(255,253,248,0.92);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(0,0,0,0.12);
   border-radius: 8px;
   padding: 14px 16px;
   z-index: 10;
@@ -376,7 +376,7 @@ body {
   font-size: 9px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: var(--muted);
   margin-bottom: 10px;
 }
 
@@ -386,7 +386,7 @@ body {
   gap: 8px;
   margin-bottom: 6px;
   font-size: 11px;
-  color: rgba(255,255,255,0.7);
+  color: var(--ink);
 }
 .legend-item:last-child { margin-bottom: 0; }
 
@@ -883,12 +883,13 @@ footer {
 
 <!-- ── NAV ── -->
 <nav class="nav">
-  <div class="nav-brand">Road Trip · Août 2025</div>
+  <div class="nav-brand">Henri en Moto</div>
   <ul class="nav-links">
-    <li><a href="#itineraire">Itinéraire</a></li>
+    <li><a href="#map-section">Carte</a></li>
     <li><a href="#budget">Budget</a></li>
     <li><a href="#moto">La Moto</a></li>
-    <li><a href="#pratique">Pratique</a></li>
+    <li><a href="itineraire.html" style="color:var(--accent);font-weight:500">Itinéraire</a></li>
+    <li><a href="actualite.html">Actualité</a></li>
   </ul>
 </nav>
 
@@ -911,7 +912,8 @@ footer {
     <div id="route-map"></div>
     <div class="map-legend">
       <div class="legend-title">Légende</div>
-      <div class="legend-item"><span class="legend-dot" style="background:#2a5c8a"></span>Aller — Belgique / Danemark / pont</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#2a5c8a"></span>Aller — Hambourg / Danemark</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#e8a020"></span>Pont Øresund</div>
       <div class="legend-item"><span class="legend-dot" style="background:#7a3a9a"></span>Laponie & cercle polaire</div>
       <div class="legend-item"><span class="legend-dot" style="background:#2a6640"></span>Retour — Finlande & Baltes</div>
       <div class="legend-item"><span class="legend-dot" style="background:#888"></span>Transit Europe centrale</div>
@@ -1260,8 +1262,8 @@ LEAFLET_JS.onload = () => {
     scrollWheelZoom: true,
   });
 
-  // Dark tile style
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  // Light colorful tile style
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '© CartoDB © OpenStreetMap',
     subdomains: 'abcd',
     maxZoom: 19
@@ -1270,18 +1272,17 @@ LEAFLET_JS.onload = () => {
   // ── Route waypoints ──
   const waypoints = {
     aller: [
-      { name: 'Abbeville', coord: [50.11, 1.84], day: 'J1', desc: 'Point de départ' },
-      { name: 'Bruxelles', coord: [50.85, 4.35], day: 'J1', desc: 'Étape Belgique' },
-      { name: 'Amsterdam', coord: [52.37, 4.90], day: 'J1', desc: 'Pays-Bas — nuit J1' },
-      { name: 'Hambourg', coord: [53.55, 10.00], day: 'J2', desc: 'Allemagne — nuit J2' },
-      { name: 'Copenhague', coord: [55.68, 12.57], day: 'J2', desc: 'Danemark · avant le pont' },
-      { name: 'Pont Øresund', coord: [55.58, 12.92], day: 'J2', desc: '🌉 27€ moto · sans réservation · 20 min' },
+      { name: 'Abbeville', coord: [50.11, 1.84], day: 'J1', desc: 'Point de départ · 750 km jusqu\'à Hambourg' },
+      { name: 'Lille', coord: [50.63, 3.07], day: 'J1', desc: 'Transit rapide via A16/A1' },
+      { name: 'Hambourg', coord: [53.55, 10.00], day: 'J1', desc: 'Nuit J1 · 750 km depuis Abbeville' },
+      { name: 'Copenhague', coord: [55.68, 12.57], day: 'J2', desc: 'Nuit J2 · Nyhavn · 330 km' },
+      { name: 'Pont Øresund', coord: [55.58, 12.92], day: 'J3', desc: '🌉 27€ moto · sans réservation · 20 min' },
       { name: 'Malmö', coord: [55.60, 13.00], day: 'J3', desc: 'Entrée en Suède' },
-      { name: 'Göteborg', coord: [57.71, 11.97], day: 'J3', desc: '1ère vraie journée suédoise' },
-      { name: 'Stockholm', coord: [59.33, 18.07], day: 'J4–6', desc: '2–3 jours · Camping Ängby' },
-      { name: 'Sundsvall', coord: [62.39, 17.31], day: 'J7', desc: 'Étape côte est' },
-      { name: 'Härnösand', coord: [62.63, 17.94], day: 'J8', desc: 'Nuit camping sauvage' },
-      { name: 'Umeå', coord: [63.83, 20.26], day: 'J9', desc: 'Dernière grande ville avant le nord' },
+      { name: 'Göteborg', coord: [57.71, 11.97], day: 'J3', desc: '1ère vraie journée suédoise · 315 km' },
+      { name: 'Stockholm', coord: [59.33, 18.07], day: 'J4–6', desc: '2–3 jours · Camping Ängby · 470 km' },
+      { name: 'Sundsvall', coord: [62.39, 17.31], day: 'J7', desc: 'Pont Högakusten à proximité · 377 km' },
+      { name: 'Umeå', coord: [63.83, 20.26], day: 'J8', desc: 'Dernière grande ville · 260 km' },
+      { name: 'Haparanda', coord: [65.84, 24.14], day: 'J9', desc: 'Frontière Finlande · 390 km' },
     ],
     nord: [
       { name: 'Umeå', coord: [63.83, 20.26], day: 'J9', desc: '' },
@@ -1371,7 +1372,7 @@ LEAFLET_JS.onload = () => {
     }).addTo(map));
 
     // Nord line
-    const nordLine = [waypoints.aller[11].coord, ...waypoints.nord.slice(1).map(w => w.coord)];
+    const nordLine = [waypoints.aller[10].coord, ...waypoints.nord.slice(1).map(w => w.coord)];
     polylines.push(L.polyline(nordLine, {
       color: colors.nord, weight: 3.5, opacity: 0.9
     }).addTo(map));
