@@ -1174,35 +1174,42 @@ LEAFLET_JS.onload = () => {
 
   // ── Route waypoints ──
   const waypoints = {
+    // Phase 1 & 2 : Abbeville → Münster → Hambourg → Copenhague → Bohuslän → Mora → Östersund → Stekenjokk
     aller: [
-      { name: 'Abbeville', coord: [50.11, 1.84], day: 'J1', desc: 'Point de départ · 750 km jusqu\'à Hambourg' },
-      { name: 'Lille', coord: [50.63, 3.07], day: 'J1', desc: 'Transit rapide via A16/A1' },
-      { name: 'Hambourg', coord: [53.55, 10.00], day: 'J1', desc: 'Nuit J1 · 750 km depuis Abbeville' },
-      { name: 'Copenhague', coord: [55.68, 12.57], day: 'J2', desc: 'Nuit J2 · Nyhavn · 330 km' },
-      { name: 'Pont Øresund', coord: [55.58, 12.92], day: 'J3', desc: '🌉 27€ moto · sans réservation · 20 min' },
-      { name: 'Malmö', coord: [55.60, 13.00], day: 'J3', desc: 'Entrée en Suède' },
-      { name: 'Göteborg', coord: [57.71, 11.97], day: 'J3', desc: '1ère vraie journée suédoise · 315 km' },
-      { name: 'Stockholm', coord: [59.33, 18.07], day: 'J4–6', desc: '2–3 jours · Camping Ängby · 470 km' },
-      { name: 'Sundsvall', coord: [62.39, 17.31], day: 'J7', desc: 'Pont Högakusten à proximité · 377 km' },
-      { name: 'Umeå', coord: [63.83, 20.26], day: 'J8', desc: 'Dernière grande ville · 260 km' },
-      { name: 'Haparanda', coord: [65.84, 24.14], day: 'J9', desc: 'Frontière Finlande · 390 km' },
+      { name: 'Abbeville', coord: [50.11, 1.84], day: 'J1', desc: 'Départ 31 juillet' },
+      { name: 'Bruxelles', coord: [50.85, 4.35], day: 'J1', desc: 'Transit Belgique' },
+      { name: 'Münster', coord: [51.96, 7.63], day: 'J1', desc: 'Nuit J1 · 531 km' },
+      { name: 'Hambourg', coord: [53.55, 10.00], day: 'J2', desc: 'Nuit J2 · 282 km' },
+      { name: 'Copenhague', coord: [55.68, 12.57], day: 'J3', desc: 'Nyhavn · J3' },
+      { name: 'Malmö', coord: [55.61, 13.00], day: 'J4', desc: '🌉 Pont Øresund 27€' },
+      { name: 'Göteborg', coord: [57.71, 11.97], day: 'J4', desc: 'Bohuslän · J4' },
+      { name: 'Mora', coord: [61.00, 14.54], day: 'J6', desc: 'Lac Siljan · J6' },
+      { name: 'Östersund', coord: [63.18, 14.64], day: 'J7', desc: 'J7 · 320 km' },
+      { name: 'Stekenjokk', coord: [65.10, 14.47], day: 'J8', desc: 'Vildmarksvägen · J8' },
     ],
+    // Phase 3 : Boucle Arctique — Stekenjokk → Jokkmokk → Abisko → Haparanda
     nord: [
-      { name: 'Umeå', coord: [63.83, 20.26], day: 'J9', desc: '' },
-      { name: 'Haparanda', coord: [65.84, 24.14], day: 'J10', desc: 'Passage en Finlande' },
-      { name: 'Rovaniemi', coord: [66.50, 25.73], day: 'J11–13', desc: '🎯 Cercle polaire arctique' },
+      { name: 'Stekenjokk', coord: [65.10, 14.47], day: 'J8', desc: '' },
+      { name: 'Jokkmokk', coord: [66.60, 19.83], day: 'J9', desc: '⭕ Cercle polaire · J9' },
+      { name: 'Abisko', coord: [68.35, 18.83], day: 'J10', desc: '68°N · point le plus au nord · J10' },
+      { name: 'Haparanda', coord: [65.84, 24.14], day: 'J12', desc: 'Frontière Finlande · J12' },
     ],
+    // Phase 4, 5, 6 : Finlande → Baltes → Pologne → Retour
     retour: [
-      { name: 'Rovaniemi', coord: [66.50, 25.73], day: 'J13', desc: '' },
-      { name: 'Oulu', coord: [65.01, 25.47], day: 'J14', desc: 'Descente Finlande' },
-      { name: 'Tampere', coord: [61.50, 23.79], day: 'J16', desc: 'Lacs finnois' },
-      { name: 'Helsinki', coord: [60.17, 24.94], day: 'J17–18', desc: '2 jours · Ferry vers Tallinn' },
-      { name: 'Tallinn', coord: [59.44, 24.75], day: 'J19', desc: 'Vieille ville UNESCO' },
-      { name: 'Riga', coord: [56.95, 24.11], day: 'J20–21', desc: 'Art nouveau' },
-      { name: 'Vilnius', coord: [54.69, 25.28], day: 'J22', desc: 'Baroque baltique' },
-      { name: 'Warsaw', coord: [52.23, 21.01], day: 'J23', desc: 'Étape Pologne' },
-      { name: 'Berlin', coord: [52.52, 13.40], day: 'J24', desc: 'Dernière étape' },
-      { name: 'Abbeville', coord: [50.11, 1.84], day: 'J25', desc: 'Retour maison 🏠' },
+      { name: 'Haparanda', coord: [65.84, 24.14], day: 'J12', desc: '' },
+      { name: 'Kuusamo', coord: [65.96, 29.19], day: 'J13', desc: 'House of Gravel · J13' },
+      { name: 'Suomussalmi', coord: [64.88, 28.91], day: 'J14', desc: 'Route des Ours · J14' },
+      { name: 'Lieksa', coord: [63.32, 30.03], day: 'J15', desc: 'Koli · J15' },
+      { name: 'Savonlinna', coord: [61.87, 28.89], day: 'J16', desc: 'Lac Saimaa · J16–17' },
+      { name: 'Helsinki', coord: [60.17, 24.94], day: 'J18', desc: 'Ferry → Tallinn · J18' },
+      { name: 'Tallinn', coord: [59.44, 24.75], day: 'J19–20', desc: 'Vieille ville UNESCO' },
+      { name: 'Riga', coord: [56.95, 24.11], day: 'J21–22', desc: 'Art Nouveau' },
+      { name: 'Vilnius', coord: [54.69, 25.28], day: 'J23–24', desc: 'Baroque baltique' },
+      { name: 'Varsovie', coord: [52.23, 21.01], day: 'J25–26', desc: 'Pologne · J25' },
+      { name: 'Poznań', coord: [52.41, 16.93], day: 'J27', desc: 'J27 · 320 km' },
+      { name: 'Magdebourg', coord: [52.13, 11.61], day: 'J28', desc: 'J28 · 410 km' },
+      { name: 'Münster', coord: [51.96, 7.63], day: 'J29', desc: 'J29 · 330 km' },
+      { name: 'Abbeville', coord: [50.11, 1.84], day: 'J30', desc: 'Retour maison 🏠' },
     ]
   };
 
@@ -1256,51 +1263,43 @@ LEAFLET_JS.onload = () => {
   let markers = [];
 
   function drawAll() {
-    // Clear previous
     polylines.forEach(p => map.removeLayer(p));
     markers.forEach(m => map.removeLayer(m));
     polylines = []; markers = [];
 
     const allPts = [...waypoints.aller, ...waypoints.nord.slice(1), ...waypoints.retour.slice(1)];
 
-    // Draw aller line (full road route)
-    const allerLine = waypoints.aller.map(w => w.coord);
-    polylines.push(L.polyline(allerLine, {
+    // Aller : Abbeville → Stekenjokk
+    polylines.push(L.polyline(waypoints.aller.map(w => w.coord), {
       color: colors.aller, weight: 3, opacity: 0.85
     }).addTo(map));
 
-    // Bridge marker — special highlight
-    polylines.push(L.polyline([[55.58, 12.92], [55.60, 13.00]], {
+    // Pont Øresund highlight
+    polylines.push(L.polyline([[55.61, 12.57], [55.61, 13.00]], {
       color: '#e8a020', weight: 4, opacity: 1
     }).addTo(map));
 
-    // Nord line
-    const nordLine = [waypoints.aller[10].coord, ...waypoints.nord.slice(1).map(w => w.coord)];
+    // Nord : Stekenjokk → Jokkmokk → Abisko → Haparanda (aller[9] = Stekenjokk)
+    const nordLine = [waypoints.aller[9].coord, ...waypoints.nord.slice(1).map(w => w.coord)];
     polylines.push(L.polyline(nordLine, {
       color: colors.nord, weight: 3.5, opacity: 0.9
     }).addTo(map));
 
-    // Retour line
-    const retourLine = waypoints.retour.map(w => w.coord);
-    polylines.push(L.polyline(retourLine, {
+    // Retour : Haparanda → Finlande → Baltes → Pologne → Abbeville
+    polylines.push(L.polyline(waypoints.retour.map(w => w.coord), {
       color: colors.retour, weight: 3, opacity: 0.85
     }).addTo(map));
 
-    // Ferry Helsinki-Tallinn (dotted)
+    // Ferry Helsinki→Tallinn (pointillé)
     polylines.push(L.polyline([[60.17, 24.94], [59.44, 24.75]], {
       color: colors.retour, weight: 2, opacity: 0.6, dashArray: '6,5'
     }).addTo(map));
 
-    // Berlin-Abbeville transit
-    polylines.push(L.polyline([[52.52, 13.40], [50.11, 1.84]], {
-      color: '#888', weight: 2, opacity: 0.5, dashArray: '5,5'
-    }).addTo(map));
+    // Markers
+    const keyStops = ['Abbeville', 'Copenhague', 'Malmö', 'Abisko', 'Helsinki', 'Tallinn', 'Varsovie'];
+    const keyEmojis = { 'Abbeville': '🏠', 'Copenhague': '🇩🇰', 'Malmö': '🌉', 'Abisko': '⭕', 'Helsinki': '⚓', 'Tallinn': '🏰', 'Varsovie': '🇵🇱' };
 
-    // Add markers
-    const keyStops = ['Abbeville', 'Copenhague', 'Pont Øresund', 'Göteborg', 'Stockholm', 'Rovaniemi', 'Helsinki', 'Tallinn'];
-    const keyEmojis = { 'Abbeville': '🏠', 'Copenhague': '🇩🇰', 'Pont Øresund': '🌉', 'Göteborg': '⚓', 'Stockholm': '🏛', 'Rovaniemi': '⭕', 'Helsinki': '⚓', 'Tallinn': '🏰' };
-
-    allPts.forEach((wp, i) => {
+    allPts.forEach(wp => {
       if (keyStops.includes(wp.name) && keyEmojis[wp.name]) {
         const color = waypoints.aller.find(w=>w.name===wp.name) ? colors.aller :
                       waypoints.nord.find(w=>w.name===wp.name) ? colors.nord : colors.retour;
@@ -1316,11 +1315,7 @@ LEAFLET_JS.onload = () => {
         const color = waypoints.aller.find(w=>w.name===wp.name) ? colors.aller :
                       waypoints.nord.find(w=>w.name===wp.name) ? colors.nord : colors.retour;
         const m = L.circleMarker(wp.coord, {
-          radius: 5,
-          fillColor: color,
-          color: '#fff',
-          weight: 1.5,
-          fillOpacity: 0.9
+          radius: 5, fillColor: color, color: '#fff', weight: 1.5, fillOpacity: 0.9
         }).bindPopup(`<div style="font-family:'DM Sans',sans-serif">
             <div style="font-family:'DM Mono',monospace;font-size:9px;color:#888;letter-spacing:1px;margin-bottom:4px">${wp.day}</div>
             <div style="font-size:14px;font-weight:500;margin-bottom:3px">${wp.name}</div>
@@ -1342,8 +1337,7 @@ LEAFLET_JS.onload = () => {
     if (phase === 'aller') {
       pts = waypoints.aller;
       color = colors.aller;
-      // Bridge highlight
-      polylines.push(L.polyline([[55.58, 12.92], [55.60, 13.00]], {
+      polylines.push(L.polyline([[55.61, 12.57], [55.61, 13.00]], {
         color: '#e8a020', weight: 5, opacity: 1
       }).addTo(map));
     } else if (phase === 'nord') {
